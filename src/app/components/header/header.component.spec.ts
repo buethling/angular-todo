@@ -10,7 +10,7 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HeaderComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
@@ -19,5 +19,11 @@ describe('HeaderComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it(`should have the 'angular-todo' title`, () => {
+    const fixture = TestBed.createComponent(HeaderComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('angular-todo');
   });
 });
