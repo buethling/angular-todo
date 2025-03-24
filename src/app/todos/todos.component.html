@@ -4,11 +4,13 @@
 <p>Loading...</p>
 }
 
+<form>
+    <label for="todosFilter">Filter Todos</label>
+    <input [(ngModel)]="searchTerm" name="todosFilter" id="todosFilter" placeholder="Filter todos..." />
+</form>
+
 <ul class="todos">
-    @for (todo of todoItems(); track todo.id) {
-    <li class="todos__item">
-        <input id="todo-{{ todo.id }}" type="checkbox" [value]="todo.completed" />
-        <label for="todo-{{ todo.id }}">{{ todo.title }}</label>
-    </li>
+    @for (todo of todoItems() | filterTodos : searchTerm(); track todo.id) {
+    <app-todo-item (todoToggled)="updateTodoItem($event)" [todo]="todo" />
     }
 </ul>
